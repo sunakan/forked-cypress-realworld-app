@@ -1,9 +1,48 @@
+---
+## Orb: cypress-io/cypress
+# https://circleci.com/developer/orbs/orb/cypress-io/cypress
+# CircleCIの設定に時間をかけることなく、Cypress.ioのe2eのブラウザテストを実行可能
+# Cypress Dashboardに結果を記録したり、パラレルモードでテストをいい感じに負荷分散することも可能
+# ダッシュボードに記録する場合は、CI環境変数に `CYPRESS_RECORD_KEY` の設定が必要
+#
+## Orb: codecov/codecov
+# 複雑な設定をすることなく、カバレッジレポートをCodecovにアップロード可能
+# カバレッジの結果を素早く得ることができるので、安心してコードをコミットすることが可能
+# メモ：CI環境変数に `CODECOV_TOKEN` の設定が必要
+---
+# $ git diff upstream/develop .circleci/config.yml
+# すると、win版もあったことがわかる
+#
+# しかし、Win版のテストの時circle/ci@2.4.0のorbが使われているが以下のエラーが出る
+# ```
+# failed to create host: Image windows-server-2019 is not compatible with resource class l1.medium
+# ```
+# https://github.com/CircleCI-Public/windows-preview-docs/issues/11
+# を見ると、多分Free planでは使えなさそう => 消す
+---
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1.28.0
   codecov: codecov/codecov@1.2.3 #
-  win: circleci/windows@2.4.0
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Executor ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# 各ワークフローではExectorを指定する必要がある
+# それをここで共通して宣言しておく
+# 使い方
+#
+# ```
+# executors:
+#   ${executor名A}:
+#     ...
+#
+# ${ワークフロー名}:
+#   jobs:
+#     - ${jobタイトル}:
+#         name: ${ちょっと詳しくした名前}
+#         ...
+#         executor: ${executor名A} # <=== ここ
+# ```
+#
 executors:
   with-chrome-and-firefox:
     docker:
@@ -11,10 +50,12 @@ executors:
     resource_class: medium+
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Commands ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# オリジナルコマンド
 commands:
   report-coverage:
     description: |
       Store coverage report as an artifact and send it to Codecov service.
+      カバレッジレポートをアーティファクトとして保存し、Codecovサービスに送信する
     steps:
       - store_artifacts:
           path: coverage
@@ -146,68 +187,6 @@ linux-workflow: &linux-workflow
         post-steps:
           - report-coverage
 
-windows-workflow: &windows-workflow
-  jobs:
-    # Setup
-    #  1. Install Cypress
-    #  2. Validate types
-    #  3. Run server unit-tests
-    - cypress/install:
-        name: "Setup Windows"
-        yarn: true
-        executor:
-          # executor comes from the "windows" orb
-          name: win/default
-          shell: bash.exe
-          size: large
-        pre-steps:
-          - run:
-              name: Disabling Windows Defender
-              shell: powershell.exe
-              command: Set-MpPreference -DisableRealtimeMonitoring $true
-        build: yarn build:ci
-        post-steps:
-          - run:
-              name: Cypress info
-              command: yarn cypress info
-          - run:
-              name: Cypress cache list
-              command: yarn cypress cache list
-          - run:
-              name: Check Types
-              command: yarn types
-          - run:
-              name: Lint Files
-              command: yarn lint
-          - run:
-              name: Run Unit Tests
-              command: yarn test:unit:ci
-
-    # Run E2E tests in Windows in Electron
-    - cypress/run:
-        name: "UI Tests - Electron - Windows"
-        spec: cypress/tests/ui/*
-        executor:
-          # executor comes from the "windows" orb
-          name: win/default
-          shell: bash.exe
-        wait-on: "http://localhost:3000"
-        yarn: true
-        start: yarn start:ci
-        record: true
-        parallel: true
-        parallelism: 5
-        ci-build-id: ${CIRCLE_SHA1:0:8}
-        group: "UI - Electron - Windows"
-        requires:
-          - Setup Windows
-        post-steps:
-          - report-coverage
-        no-workspace: true
-        timeout: 30m
-
 workflows:
   linux:
     <<: *linux-workflow
-  windows:
-    <<: *windows-workflow
