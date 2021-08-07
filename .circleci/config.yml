@@ -46,11 +46,12 @@ orbs:
 #         executor: ${executor名A} # <=== ここ
 # ```
 #
+# resource_classを指定するならFree planは無理なので削除する
+#
 executors:
   with-chrome-and-firefox:
     docker:
       - image: "cypress/browsers:node14.17.0-chrome88-ff89"
-    resource_class: medium+
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Commands ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # オリジナルコマンド
