@@ -23,6 +23,43 @@
 # を見ると、多分Free planでは使えなさそう => 消す
 #-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
+# もしpercy周りで以下のエラーが出たら
+# ```
+# Warning: Skipping visual tests. PERCY_TOKEN was not provided.
+# ```
+# 1. percyに登録、PERCY_TOKENを発行して
+# 2. Create new project
+# 3. プロジェクト名はなんでもいい。自分は「Cypressが作ってくれたRealWorldApp」とした
+# 4. GitHubリポジトリをprojectと紐付け
+# 5. percyのプロジェクトのダッシュボードにて、下の方にProject tokenとしてPERCY_TOKENがある
+# 6. PERCY_TOKENをCircleCIの環境変数として埋め込む
+# 7. CircleCIをRerun
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# もしCypress周りで以下のエラーが出たら
+# ```
+# You passed the --record flag but did not provide us your Record Key.
+# ...
+# You can also set the key as an environment variable with the name CYPRESS_RECORD_KEY.
+# ```
+# 1. Cypress に登録
+# 2. https://dashboard.cypress.io
+# 3. Create New Project
+# 4. プロジェクト名はなんでもいい。自分は「Cypressが作ってくれたRealWorldApp」とした
+# 5. プロジェクトのダッシュボードにてprojectIdをコピーしてリポジトリのcypress.jsonに埋め込む
+# 6. プロジェクトのダッシュボードにて以下のようなコードが有り、CYPRESS_RECORD_KEYとしてCircleCIの環境変数に埋め込む
+#
+# ```
+# npx cypress run --record --key ${CYPRESS_RECORD_KEY}
+# ```
+#
+# 7. cypress.jsonをコミットしてpush(CircleCIがまた動くはず)
+# 8. CircleCIで確認
+#-------------------------------------------------------------------------------
+
+
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1.28.0
@@ -40,7 +77,7 @@ orbs:
 #
 # ${ワークフロー名}:
 #   jobs:
-#     - ${jobタイトル}:
+#     - ${jobタイトル(Orbsで指定されてたりもする)}:
 #         name: ${ちょっと詳しくした名前}
 #         ...
 #         executor: ${executor名A} # <=== ここ
