@@ -2,7 +2,7 @@
 
 勝手に意訳したり、コードリーディングでのメモをしたり勉強用のリポジトリ
 
-[![CircleCI](https://circleci.com/gh/sunakan/forked-cypress-realworld-app/tree/suna-main.svg?style=svg&style=shield)](https://circleci.com/gh/sunakan/forked-cypress-realworld-app/tree/suna-main)
+[![CircleCI](https://circleci.com/gh/sunakan/forked-cypress-realworld-app/tree/suna-main.svg?style=shield)](https://circleci.com/gh/sunakan/forked-cypress-realworld-app/tree/suna-main)
 [![Cypressが作ってくれたRealWorldApp](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/39p3u5/suna-main&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/39p3u5/runs)
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/68136805/Cypress-RealWorldApp)
 
