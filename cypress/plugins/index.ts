@@ -1,3 +1,16 @@
+// メモ
+// https://docs.cypress.io/api/plugins/writing-a-plugin#Plugins-API
+// - exportされた関数は、 `cypress open` or `cypress run` でプロジェクトがopenされる度にcallされる
+
+// フルキヨキ： require構文
+// イマドキ： module構文(import)
+//
+// lodash              ok, 便利関数の集まり(_.lastとか_.eachとか)
+// path                ok, path.joinとか使えるようになる
+// axios               ok, fetchAPIのちょっとだけ楽なやつ(不要かも)
+// dotenv              ok, .envを読み込んで環境変数的な感じで使える
+// bluebird            ok, Promiseの速い版？(もしかしたら今は不要かも)
+// @percy/cypress/task ok, percyのhealthcheck(不要かも, https://github.com/percy/percy-cypressでもv3からは不要とか書いてある)
 import _ from "lodash";
 import path from "path";
 import axios from "axios";
@@ -6,6 +19,8 @@ import Promise from "bluebird";
 import { percyHealthCheck } from "@percy/cypress/task";
 import codeCoverageTask from "@cypress/code-coverage/task";
 
+// .env.localを読んで(なくても失敗しない)
+// 更に.envを読む(かぶった時は、.env.localが優先)
 dotenv.config({ path: ".env.local" });
 dotenv.config();
 
@@ -50,6 +65,9 @@ export default (on, config) => {
     return Array.isArray(query) ? Promise.map(query, fetchData) : fetchData(query);
   };
 
+  // https://docs.cypress.io/api/plugins/writing-a-plugin#on
+  // 例：on("<EVENT>", (a, b) => {})
+  // cy.task("db:seed")とかcy.task("filter:database")とかでcallする
   on("task", {
     percyHealthCheck,
     async "db:seed"() {
