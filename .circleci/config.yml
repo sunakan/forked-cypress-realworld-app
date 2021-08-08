@@ -149,6 +149,7 @@ linux-workflow: &linux-workflow
           - Setup Linux
         post-steps:
           - report-coverage
+        env: "coverage=true"
 
     # Run E2E tests in Chrome
     - cypress/run:
@@ -169,6 +170,7 @@ linux-workflow: &linux-workflow
           - Setup Linux
         post-steps:
           - report-coverage
+        env: "coverage=true"
 
     # Run E2E tests in Chrome with mobile device viewport
     - cypress/run:
@@ -189,6 +191,7 @@ linux-workflow: &linux-workflow
           - Setup Linux
         post-steps:
           - report-coverage
+        env: "coverage=true"
 
     # Run E2E tests in Firefox
     - cypress/run:
@@ -208,6 +211,7 @@ linux-workflow: &linux-workflow
           - Setup Linux
         post-steps:
           - report-coverage
+        env: "coverage=true"
 
     # Run E2E tests in Firefox with mobile device viewport
     - cypress/run:
@@ -228,6 +232,7 @@ linux-workflow: &linux-workflow
           - Setup Linux
         post-steps:
           - report-coverage
+        env: "coverage=true"
 
 workflows:
   linux:
