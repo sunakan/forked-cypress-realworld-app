@@ -1,16 +1,19 @@
-このリポジトリは [cypress-io/cypress-realworld-app](https://github.com/cypress-io/cypress-realworld-app) の fork したやつ
+このリポジトリは [cypress-io/cypress-realworld-app](https://github.com/cypress-io/cypress-realworld-app) の fork したリポジトリ
 
 勝手に意訳したり、コードリーディングでのメモをしたり勉強用のリポジトリ
 
-[![CircleCI](https://circleci.com/gh/sunakan/forked-cypress-realworld-app/tree/suna-main.svg?style=shield)](https://circleci.com/gh/sunakan/forked-cypress-realworld-app/tree/suna-main)
-[![Cypressが作ってくれたRealWorldApp](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/39p3u5/suna-main&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/39p3u5/runs)
-[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/68136805/Cypress-RealWorldApp)
-[![codecov](https://codecov.io/gh/sunakan/forked-cypress-realworld-app/branch/suna-main/graph/badge.svg?token=BHLDJDR33B)](https://codecov.io/gh/sunakan/forked-cypress-realworld-app)
+|Tool|役割|バッジ|
+|:--|:--|:--|
+|CircleCI|CI|[![CircleCI](https://circleci.com/gh/sunakan/forked-cypress-realworld-app/tree/suna-main.svg?style=shield)](https://circleci.com/gh/sunakan/forked-cypress-realworld-app/tree/suna-main)|
+|Cypressダッシュボード|Cypressのテストレポート|[![Cypressが作ってくれたRealWorldApp](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/39p3u5/suna-main&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/39p3u5/runs)|
+|Percy|Cypressで撮ったスクショをブラウザ毎に一覧できる|[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/68136805/Cypress-RealWorldApp)|
+|Codecov|Cypressで測ったカバレッジのレポート|[![codecov](https://codecov.io/gh/sunakan/forked-cypress-realworld-app/branch/suna-main/graph/badge.svg?token=BHLDJDR33B)](https://codecov.io/gh/sunakan/forked-cypress-realworld-app)|
+|CodeClimate|コードのメンテナンス性|[![Maintainability](https://api.codeclimate.com/v1/badges/0a6daea2f542ad5dc1b0/maintainability)](https://codeclimate.com/github/sunakan/forked-cypress-realworld-app/maintainability)|
 
 <p align="center">
 A payment application to demonstrate <strong>real-world</strong> usage of <a href="https://cypress.io">Cypress</a> testing methods, patterns, and workflows.
 
-Cypress のテスト手法、パターン、ワークフローを実際に使用して実証するための決済アプリケーションです。
+Cypress のテスト手法、パターン、ワークフローを実際に使用して実証するための決済アプリケーション
 
 </p>
 
@@ -20,46 +23,37 @@ Cypress のテスト手法、パターン、ワークフローを実際に使用
 
 > 💬 **Note from maintainers**(メンテナのメモ)
 >
-> This application is purely for demonstration and educational purposes. Its setup and configuration resemble typical real-world applications, but it's not a full-fledge production system. Use this app to learn, experiment, tinker, and practice application testing with Cypress.
 > このアプリはデモ・教育を目的にしてる
+
 > 設定と構成は本番と似ているかも知れないけど、本格的じゃない
+
 > アプリは Cypress を使ったテストの学習、実験、改造、練習に使ってください
 >
 > Happy Testing
-> いえーい
 
 ---
 
-## Features(機能郡)
+## 技術スタックとか推し
 
-🛠 Built with [React][reactjs], [XState][xstate], [Express][express], [lowdb][lowdb], [Material-UI][material-ui] and [TypeScript][typescript]
-
-- React
-- XState
+- [Express][express]と[React][reactjs] でのフルスタックなアプリケーション
+- [XState][xstate]
   - 状態遷移を表現するのに便利なパッケージ
-- express
-- lowdb
+- [lowdb][lowdb]
   - json ファイルで db を表現
-- マテリアル UI
-- TypeScript
-  ⚡️ Zero database dependencies
-- DB に依存しない
-  🚀 Full-stack [Express][express]/[React][reactjs] application with real-world features and tests
-- フルスタック Express/React アプリ(RealWorld の機能とテストの全て付き)
-  👮‍♂️ Local Authentication
-- ローカルでの認証
-  🔥 Database Seeding with End-to-end Tests
-- E2E テストでの DB seeding
-  💻 CI/CD + [Cypress Dashboard][cypressdashboard]
-- CI/CD は Cypress のダッシュボード
+- [Material-UI][material-ui]
+- [TypeScript][typescript]
+
+- Zero database dependencies
+  - DB に依存しない
+
+-  Local Authentication
+  - ローカルでの認証
+- Database Seeding with End-to-end Tests
+  - E2E テストでの DB seeding
+- CI/CD + [Cypress Dashboard][cypressdashboard]
+  - CI/CD は Cypress のダッシュボード
 
 ## Getting Started
-
-The Cypress Real-World App (RWA) is a full-stack Express/React application backed by a local JSON database ([lowdb]).
-
-Cypress Real-World App (RWA) はローカルな JSON DB を使ったフルスタックな Express/React アプリ
-
-The app is bundled with [example data](./data/database.json) (`data/database.json`) that contains everything you need to start using the app and run tests out-of-the-box.
 
 アプリには、database.json が付属されており、アプリ起動後すぐにテストを始めるにあたって必要なものが全部入ってる!!
 
@@ -67,8 +61,8 @@ The app is bundled with [example data](./data/database.json) (`data/database.jso
 
 > 🚩 **Note**
 >
-> You can login to the app with any of the [example app users](./data/database.json#L2). The default password for all users is `s3cret`.  
 > サンプルアプリのユーザーのどれかログイン可能
+>
 > デフォルトのパスワードは全て `s3cret`
 >
 > Example users can be seen by running `yarn list:dev:users`.
@@ -87,17 +81,15 @@ $ cat data/database.json | jq -c '.users[] | {username: .username, password: "s3
 
 ### Prerequisites(前提条件)
 
-The only requirement for this project is to have [Node.js](https://nodejs.org/en/) **version 14** installed on your machine. Refer to the [.node-version](./.node-version) file for the exact version.
+|前提環境|バージョン|
+|:--|:--|
+|Node.js|14|
 
-このプロジェクトの唯一の要件は、お使いのマシンに Node.js のバージョン 14 がインストールされていること
+正確なバージョンについては、.node-version ファイルを参照
 
-正確なバージョンについては、.node-version ファイルを参照してください。
+TypeScript は、プロジェクトの依存関係としてローカルに追加されるので、インストールする必要はなし
 
-TypeScript will be added as a local dependency to the project, so no need to install it.
-
-TypeScript は、プロジェクトのローカルな依存関係として追加されますので、インストールする必要はなし
-
-### Installation
+### (依存関係の)インストール
 
 ```shell
 $ yarn install
@@ -105,26 +97,20 @@ $ yarn install
 $ npx yarn install
 ```
 
-### Run the app
+### アプリの起動
 
 ```shell
 $ npx yarn dev
 ```
 
-> 🚩 **Note**
->
-> The app will run on port `3000` (frontend) and `3001` (API backend) by default. Please make sure there are no other applications or services running on both ports.
-> フロントエンド：3000 番
-> バックエンド：3001 番
-> アプリを起動する時、2 つのポート番号を空けておくこと
->
-> If you want to change the default ports, you can do so by modifying `REACT_APP_PORT` and `REACT_APP_BACKEND_PORT` variables in `.env` file.
-> もしポート番号を変更したい時は `.env` の `REACT_APP_PORT` と `REACT_APP_BACKEND_PORT` を変更したらよい
->
-> However, make sure the modified port numbers in `.env` are not commited into Git since the CI environments still expect the application run on default ports.
-> でもコミットはしないで(CI のため)
+|側|ポート番号|.envの変数の対応|
+|:--|:--|:--|
+|フロントエンド|3000|`REACT_APP_PORT`|
+|バックエンド|3001|`REACT_APP_BACKEND_PORT`|
 
-### Start Cypress
+でもコミットはしないで(CI のため)
+
+### Cypressの始め方
 
 ```shell
 $ yarn cypress:open
@@ -134,17 +120,11 @@ $ npx yarn cypress:open
 
 > 🚩 **Note**
 >
-> If you have changed the default ports, then you need to update Cypress configuration file (`cypress.json`) locally.
-> デフォルトのポート番号(3000)を変更したい時、cypress.json を更新するべき
+> もしデフォルトのポート番号(3000) を変更した時、cypress.jsonの方も変更すること
 >
-> There are three properties that you need to update in `cypress.json`: `baseUrl`, `apiUrl`, and `url`.
-> 3 つのプロパティの更新が必要(baseUrl と apiUrl と url)
+> 3つのプロパティの更新が必要(baseUrl と apiUrl と url)
 >
-> The port number in `baseUrl` corresponds to `REACT_APP_PORT` variable in `.env` file. Similarly, the port number in `apiUrl` and `url` correspond to `REACT_APP_BACKEND_PORT`.
-> apiUrl と url のポート番号は.env にある `REACT_APP_BACKEND_PORT` に対応している
->
-> For example, if you have changed `REACT_APP_PORT` to `13000` and `REACT_APP_BACKEND_PORT` to `13001` in `.env` file, then your `cypress.json` should look similar to the following snippet:
-> 例： .env の `REACT_APP_PORT` を 13000, `REACT_APP_BACKEND_PORT` を 13001 とすると、cypress.json は以下のような感じになる
+> 例： .env の `REACT_APP_PORT` を 13000, `REACT_APP_BACKEND_PORT` を 13001 に変更した時、cypress.json は以下のような感じになる
 >
 > ```json
 > {
@@ -161,7 +141,6 @@ $ npx yarn cypress:open
 > }
 > ```
 >
-> Avoid committing the modified `cypress.json` into Git since the CI environments still expect the application run on default ports.
 > CI 環境では、デフォルトポートで実行されることを期待されているので、 `cypress.json` を更新して commit するのは避ける
 
 ## Tests
@@ -172,28 +151,15 @@ $ npx yarn cypress:open
 | UI テスト  | [cypress/tests/ui](./cypress/tests/ui)   |
 | 単体テスト | [`src/__tests__`](./src/__tests__)       |
 
-## Database
+## DB
 
-- The local JSON database located in [data/database.json](./data/database.json) and is managed with [lowdb].
-
-  - JSON DB は data/database.json にできる
-  - 使ってる npm パッケージは lowdb
-
-- The database is [reseeded](./data/database-seed.json) each time the application is started (via `yarn dev`). Database seeding is done in between each [Cypress End-to-End test](./cypress/tests).
-
-  - db は起動の度に reseed(初期化 => seed)される
-  - test 中の間 spec が実行される度に seed される
-
-- Updates via the React frontend are sent to the [Express][express] server and handled by a set of [database utilities](backend/database.ts)
-
-  - React からの更新は express サーバを通して backend/database.ts で handle される
-
-- Generate a new database using `yarn db:seed`.
-
-  - DB をリセットしたい時、 `yarn db:seed`
-
-- An [empty database seed](./data/empty-seed.json) is provided along with a script (`yarn start:empty`) to view the application without data.
-  - DB が空の状態でアプリをスタートしたい時は `yarn start:empty`
+- JSON DB は data/database.json にできる
+- 使ってる npm パッケージは lowdb
+- seedファイルは ./data/database-seed.json
+- test 中の間 spec が実行される度に seed される
+- React からの更新は express サーバを通して backend/database.ts で handle される
+- DB をリセットしたい時、 `yarn db:seed`
+- DB が空の状態でアプリをスタートしたい時は `yarn start:empty`
 
 ## Additional NPM Scripts
 
@@ -217,21 +183,14 @@ $ npx yarn cypress:open
 $ yarn dev
 ```
 
-- For a complete list of scripts see [package.json](./package.json)
-  - 一覧は package.json の scripts へ
+一覧は package.json の scripts へ
 
-## Code Coverage Report
+## コードカバレッジレポート
 
-The Cypress Real-World App uses the [@cypress/code-coverage](https://github.com/cypress-io/code-coverage) plugin to generate code coverage reports for the app frontend and backend.
 
-このアプリは [@cypress/code-coverage](https://github.com/cypress-io/code-coverage) プラグインを利用して、フロントエンドとバックエンドのコードカバレッジレポートをだす
+CircleCIの [@cypress/code-coverage](https://github.com/cypress-io/code-coverage) プラグインを利用してカバレッジレポートを出す
 
-To generate a code coverage report:
-
-1. Run `yarn cypress:run --env coverage=true` and wait for the test run to complete.
-2. Once the test run is complete, you can view the report at `coverage/index.html`.
-
-方法は
+手元での方法は
 
 ```
 $ yarn cypress:run --env coverage=true
@@ -239,9 +198,7 @@ $ yarn cypress:run --env coverage=true
 $ open coverage/index.html
 ```
 
-## 3rd Party Authentication Providers
-
-Support for 3rd party authentication is available in the application to demonstrate the concept and commands needed for programmatic login.
+## 3rd Party 認証プロバイダ
 
 サードパーティ認証のサポートは、プログラムによるログインに必要なコンセプトとコマンドを示すために、アプリケーションで利用可能
 
