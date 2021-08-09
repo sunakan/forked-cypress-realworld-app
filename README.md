@@ -33,25 +33,19 @@ Cypress のテスト手法、パターン、ワークフローを実際に使用
 
 ---
 
-## 技術スタックとか推し
+## Features
 
-- [Express][express]と[React][reactjs] でのフルスタックなアプリケーション
-- [XState][xstate]
-  - 状態遷移を表現するのに便利なパッケージ
-- [lowdb][lowdb]
-  - json ファイルで db を表現
-- [Material-UI][material-ui]
-- [TypeScript][typescript]
-
-- Zero database dependencies
-  - DB に依存しない
-
--  Local Authentication
-  - ローカルでの認証
-- Database Seeding with End-to-end Tests
-  - E2E テストでの DB seeding
-- CI/CD + [Cypress Dashboard][cypressdashboard]
-  - CI/CD は Cypress のダッシュボード
+|Feature|補足|
+|:--|:--|
+|[TypeScript][typescript]||
+|[Express][express]と[React][reactjs] |
+|[XState][xstate]|状態遷移を表現|
+|[lowdb][lowdb]|json ファイルで db を表現|
+|[Material-UI][material-ui]||
+|DB に依存しない||
+|ローカルで認証||
+|E2E テストでの DB seeding||
+|CI + [Cypress Dashboard][cypressdashboard]||
 
 ## Getting Started
 
