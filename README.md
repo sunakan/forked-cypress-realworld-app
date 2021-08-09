@@ -2,13 +2,13 @@
 
 勝手に意訳したり、コードリーディングでのメモをしたり勉強用のリポジトリ
 
-|Tool|役割|バッジ|
-|:--|:--|:--|
-|CircleCI|CI|[![CircleCI](https://circleci.com/gh/sunakan/forked-cypress-realworld-app/tree/suna-main.svg?style=shield)](https://circleci.com/gh/sunakan/forked-cypress-realworld-app/tree/suna-main)|
-|Cypressダッシュボード|Cypressのテストレポート|[![Cypressが作ってくれたRealWorldApp](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/39p3u5/suna-main&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/39p3u5/runs)|
-|Percy|Cypressで撮ったスクショをブラウザ毎に一覧できる|[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/68136805/Cypress-RealWorldApp)|
-|Codecov|Cypressで測ったカバレッジのレポート|[![codecov](https://codecov.io/gh/sunakan/forked-cypress-realworld-app/branch/suna-main/graph/badge.svg?token=BHLDJDR33B)](https://codecov.io/gh/sunakan/forked-cypress-realworld-app)|
-|CodeClimate|コードのメンテナンス性|[![Maintainability](https://api.codeclimate.com/v1/badges/0a6daea2f542ad5dc1b0/maintainability)](https://codeclimate.com/github/sunakan/forked-cypress-realworld-app/maintainability)|
+| Tool                   | 役割                                             | バッジ                                                                                                                                                                                                              |
+| :--------------------- | :----------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| CircleCI               | CI                                               | [![CircleCI](https://circleci.com/gh/sunakan/forked-cypress-realworld-app/tree/suna-main.svg?style=shield)](https://circleci.com/gh/sunakan/forked-cypress-realworld-app/tree/suna-main)                            |
+| Cypress ダッシュボード | Cypress のテストレポート                         | [![Cypressが作ってくれたRealWorldApp](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/39p3u5/suna-main&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/39p3u5/runs) |
+| Percy                  | Cypress で撮ったスクショをブラウザ毎に一覧できる | [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/68136805/Cypress-RealWorldApp)                                                  |
+| Codecov                | Cypress で測ったカバレッジのレポート             | [![codecov](https://codecov.io/gh/sunakan/forked-cypress-realworld-app/branch/suna-main/graph/badge.svg?token=BHLDJDR33B)](https://codecov.io/gh/sunakan/forked-cypress-realworld-app)                              |
+| CodeClimate            | コードのメンテナンス性                           | [![Maintainability](https://api.codeclimate.com/v1/badges/0a6daea2f542ad5dc1b0/maintainability)](https://codeclimate.com/github/sunakan/forked-cypress-realworld-app/maintainability)                               |
 
 <p align="center">
 A payment application to demonstrate <strong>real-world</strong> usage of <a href="https://cypress.io">Cypress</a> testing methods, patterns, and workflows.
@@ -35,17 +35,17 @@ Cypress のテスト手法、パターン、ワークフローを実際に使用
 
 ## Features
 
-|Feature|補足|
-|:--|:--|
-|[TypeScript][typescript]||
-|[Express][express]と[React][reactjs] |
-|[XState][xstate]|状態遷移を表現|
-|[lowdb][lowdb]|json ファイルで db を表現|
-|[Material-UI][material-ui]||
-|DB に依存しない||
-|ローカルで認証||
-|E2E テストでの DB seeding||
-|CI + [Cypress Dashboard][cypressdashboard]||
+| Feature                                    | 補足                      |
+| :----------------------------------------- | :------------------------ |
+| [TypeScript][typescript]                   |                           |
+| [Express][express]と[React][reactjs]       |
+| [XState][xstate]                           | 状態遷移を表現            |
+| [lowdb][lowdb]                             | json ファイルで db を表現 |
+| [Material-UI][material-ui]                 |                           |
+| DB に依存しない                            |                           |
+| ローカルで認証                             |                           |
+| E2E テストでの DB seeding                  |                           |
+| CI + [Cypress Dashboard][cypressdashboard] |                           |
 
 ## Getting Started
 
@@ -75,9 +75,9 @@ $ cat data/database.json | jq -c '.users[] | {username: .username, password: "s3
 
 ### Prerequisites(前提条件)
 
-|前提環境|バージョン|
-|:--|:--|
-|Node.js|14|
+| 前提環境 | バージョン |
+| :------- | :--------- |
+| Node.js  | 14         |
 
 正確なバージョンについては、.node-version ファイルを参照
 
@@ -97,14 +97,14 @@ $ npx yarn install
 $ npx yarn dev
 ```
 
-|側|ポート番号|.envの変数の対応|
-|:--|:--|:--|
-|フロントエンド|3000|`REACT_APP_PORT`|
-|バックエンド|3001|`REACT_APP_BACKEND_PORT`|
+| 側             | ポート番号 | .env の変数の対応        |
+| :------------- | :--------- | :----------------------- |
+| フロントエンド | 3000       | `REACT_APP_PORT`         |
+| バックエンド   | 3001       | `REACT_APP_BACKEND_PORT` |
 
 でもコミットはしないで(CI のため)
 
-### Cypressの始め方
+### Cypress の始め方
 
 ```shell
 $ yarn cypress:open
@@ -114,9 +114,9 @@ $ npx yarn cypress:open
 
 > 🚩 **Note**
 >
-> もしデフォルトのポート番号(3000) を変更した時、cypress.jsonの方も変更すること
+> もしデフォルトのポート番号(3000) を変更した時、cypress.json の方も変更すること
 >
-> 3つのプロパティの更新が必要(baseUrl と apiUrl と url)
+> 3 つのプロパティの更新が必要(baseUrl と apiUrl と url)
 >
 > 例： .env の `REACT_APP_PORT` を 13000, `REACT_APP_BACKEND_PORT` を 13001 に変更した時、cypress.json は以下のような感じになる
 >
@@ -149,7 +149,7 @@ $ npx yarn cypress:open
 
 - JSON DB は data/database.json にできる
 - 使ってる npm パッケージは lowdb
-- seedファイルは ./data/database-seed.json
+- seed ファイルは ./data/database-seed.json
 - test 中の間 spec が実行される度に seed される
 - React からの更新は express サーバを通して backend/database.ts で handle される
 - DB をリセットしたい時、 `yarn db:seed`
@@ -181,8 +181,7 @@ $ yarn dev
 
 ## コードカバレッジレポート
 
-
-CircleCIの [@cypress/code-coverage](https://github.com/cypress-io/code-coverage) プラグインを利用してカバレッジレポートを出す
+CircleCI の [@cypress/code-coverage](https://github.com/cypress-io/code-coverage) プラグインを利用してカバレッジレポートを出す
 
 手元での方法は
 
@@ -190,6 +189,12 @@ CircleCIの [@cypress/code-coverage](https://github.com/cypress-io/code-coverage
 $ yarn cypress:run --env coverage=true
 # Macとかなら
 $ open coverage/index.html
+```
+
+## 開発-バックエンド
+
+```
+$ npx yarn run start:api
 ```
 
 ## 3rd Party 認証プロバイダ
